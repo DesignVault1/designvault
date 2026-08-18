@@ -26,7 +26,20 @@ function openModal(){backdrop.hidden=false;document.body.style.overflow="hidden"
 function closeModal(){backdrop.hidden=true;document.body.style.overflow=""}
 document.getElementById("uploadTop").onclick=openModal;document.getElementById("uploadMain").onclick=openModal;document.getElementById("modalClose").onclick=closeModal;
 backdrop.addEventListener("click",e=>{if(e.target===backdrop)closeModal()});
-document.getElementById("uploadForm").addEventListener("submit",e=>{e.preventDefault();document.getElementById("uploadForm").hidden=true;document.getElementById("uploadSuccess").hidden=false;setTimeout(()=>{closeModal();document.getElementById("uploadForm").hidden=false;document.getElementById("uploadSuccess").hidden=true;e.target.reset()},1800)});
+document.getElementById("uploadForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ const form=e.currentTarget;
+ form.hidden=true;
+ document.getElementById("uploadSuccess").hidden=false;
+ setTimeout(()=>{
+   closeModal();
+   form.hidden=false;
+   document.getElementById("uploadSuccess").hidden=true;
+   form.reset();
+ },900);
+});
 document.getElementById("filterBtn").onclick=()=>document.getElementById("filters").classList.toggle("show");
 document.getElementById("menuBtn").onclick=()=>document.getElementById("mobileMenu").classList.toggle("open");
 document.querySelectorAll('a[href="#free"],a[href="#premium"]').forEach(a=>a.addEventListener("click",()=>{const target=a.getAttribute("href")==="#free"?"free":"premium";const btn=document.querySelector(`[data-filter="${target}"]`);if(btn)btn.click()}));
+
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!backdrop.hidden)closeModal()});
