@@ -1,10 +1,4 @@
-[hidden] {
-    display: none !important;
-}
 
-:root {
-    --ink:#171717;
-    ...
 const designs=[
  {title:"Eid Mubarak — Urdu Typography",cat:"urdu",type:"free",price:"Free",thumb:"t1",lang:"Urdu",author:"Sarah Ahmed"},
  {title:"Punjabi Poetry Poster",cat:"punjabi",type:"premium",price:"$3",thumb:"t2",lang:"Punjabi",author:"Ali Khan"},
