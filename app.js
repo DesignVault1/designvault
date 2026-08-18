@@ -29,8 +29,17 @@ document.getElementById("searchBtn").addEventListener("click",search);
 document.getElementById("searchInput").addEventListener("keydown",e=>{if(e.key==="Enter")search()});
 function search(){const q=document.getElementById("searchInput").value.trim().toLowerCase();render(q?designs.filter(d=>(d.title+" "+d.lang+" "+d.author+" "+d.cat).toLowerCase().includes(q)):designs);document.getElementById("explore").scrollIntoView({behavior:"smooth"})}
 const backdrop=document.getElementById("modalBackdrop");
-function openModal(){backdrop.hidden=false;document.body.style.overflow="hidden"}
-function closeModal(){backdrop.hidden=true;document.body.style.overflow=""}
+function openModal(){
+  backdrop.hidden=false;
+  backdrop.style.display="grid";
+  document.body.style.overflow="hidden";
+}
+
+function closeModal(){
+  backdrop.hidden=true;
+  backdrop.style.display="none";
+  document.body.style.overflow="";
+}
 document.getElementById("uploadTop").onclick=openModal;document.getElementById("uploadMain").onclick=openModal;document.getElementById("modalClose").onclick=closeModal;
 backdrop.addEventListener("click",e=>{if(e.target===backdrop)closeModal()});
 document.getElementById("uploadForm").addEventListener("submit",e=>{
