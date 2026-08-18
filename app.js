@@ -41,8 +41,11 @@ function closeModal(){
   document.body.style.overflow="";
 }
 document.getElementById("uploadTop").onclick=openModal;document.getElementById("uploadMain").onclick=openModal;document.getElementById("modalClose").onclick=closeModal;
-backdrop.addEventListener("click",e=>{if(e.target===backdrop)closeModal()});
-document.getElementById("uploadForm").addEventListener("submit",e=>{
+document.addEventListener("keydown",function(e){
+  if(e.key==="Escape"){
+    closeModal();
+  }
+});document.getElementById("uploadForm").addEventListener("submit",e=>{
  e.preventDefault();
  const form=e.currentTarget;
  form.hidden=true;
